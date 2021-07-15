@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treino TD</title>
+	<style>
+        .green {
+            background-color: green;
+        }
+        .red {
+            background-color: red;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+        .orange {
+            background-color: orange;
+        }
+        .intervalo {
+            background-color: white;
+        }
+		.butaoChristian {
+		  background-color: #4CAF50; /* Green */
+		  border: none;
+		  color: white;
+		  padding: 15px 32px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		  font-size: 16px;
+		}
+
+    .segurando {
+      display: flex;
+      margin-top: 18.75rem;
+      justify-content: center;
+    }
+		.flex-container {
+      justify-content: center;
+		  }
+		  .config{
+		    font-size: small;
+			  color: #726e6e;
+		  }
+		
+    </style>
+</head>
+<body>
+  <section class="segurando">
+    <div class="flex-container" id="config">
+      <div class="config">
+        <label for="fname">Intervalo de Tempo:</label>
+        <input type="number" style="width:30px" id="fnIntervalo" value="3" name="fname">&nbsp;(Segundos)<br><br>
+      </div>
+      <div>
+        <input type="button" class="butaoChristian" value="Inciar" onclick="iniciar();">
+      </div>
+    </div>
+    <div id='card' style="display:none;" class="intervalo">
+    </div>
+  </section>
+	
+    <script>
+
+            carregarCOnfiguracoes();
+			
+			function carregarCOnfiguracoes(){
+				var fnIntervalo = document.getElementById('fnIntervalo');
+				var intervalo = getIntervalo();
+				fnIntervalo.value = intervalo/1000;
+			}
+			//Gravar Localstorage
+			function setIntervalo(intervalo){
+				localStorage.setItem("intervalo",intervalo);
+			}
+			
+			function getIntervalo(){
+				var intervalo = 3000;
+				var inter = localStorage.getItem('intervalo');				
+				
+				if(inter != undefined && inter != null && inter != '')
+					intervalo = inter;
+					
+				return intervalo;
+			}
+			
+			function docara() {
+               const random = (min, max) => Math.floor (Math.random() * (max - min) + min); 
+               const numeros =[1, 2, 3, 4, 5];
+
+               const novosnumeros = ( (numeros[random(0, numeros.length)])) ;
+
+              if (novosnumeros === 1) {
+                document.querySelector('body').classList.remove('red');
+                document.querySelector('body').classList.remove('green');
+                document.querySelector('body').classList.remove('blue');
+                document.querySelector('body').classList.remove('yellow');
+                document.querySelector('body').classList.remove('orange');
+
+                document.querySelector('body').classList.toggle('intervalo');
+
+                document.querySelector('body').classList.add('red');
+              }
+
+              else if (novosnumeros === 2) {
+                document.querySelector('body').classList.remove('red');
+                document.querySelector('body').classList.remove('green');
+                document.querySelector('body').classList.remove('blue');
+                document.querySelector('body').classList.remove('yellow');
+                document.querySelector('body').classList.remove('orange');
+
+                document.querySelector('body').classList.toggle('intervalo');
+
+                document.querySelector('body').classList.add('green');
+              }
+
+              else if (novosnumeros === 3) {
+                document.querySelector('body').classList.remove('red');
+                document.querySelector('body').classList.remove('green');
+                document.querySelector('body').classList.remove('blue');
+                document.querySelector('body').classList.remove('yellow');
+                document.querySelector('body').classList.remove('orange');
+
+                document.querySelector('body').classList.toggle('intervalo');
+
+                document.querySelector('body').classList.add('blue');
+              }
+
+              else if (novosnumeros === 4) {
+                document.querySelector('body').classList.remove('red');
+                document.querySelector('body').classList.remove('green');
+                document.querySelector('body').classList.remove('blue');
+                document.querySelector('body').classList.remove('yellow');
+                document.querySelector('body').classList.remove('orange');
+
+                document.querySelector('body').classList.toggle('intervalo');
+
+                document.querySelector('body').classList.add('yellow');
+              }
+
+              else if (novosnumeros === 5) {
+                document.querySelector('body').classList.remove('red');
+                document.querySelector('body').classList.remove('green');
+                document.querySelector('body').classList.remove('blue');
+                document.querySelector('body').classList.remove('yellow');
+                document.querySelector('body').classList.remove('orange');
+
+                document.querySelector('body').classList.toggle('intervalo');
+
+                document.querySelector('body').classList.add('orange');
+              }
+            }
+			
+			//1 aleatoriedade de um valor aparece um número
+
+            //2 desse número eu execute e adicione a classe que eu quero 
+
+            //3 temporizar o resultado dessa função
+			
+			function iniciar(){
+				var config = document.getElementById('config');
+				var card = document.getElementById('card');
+				card.style.display = 'block';
+				config.style.display = 'none';
+				
+				var fnIntervalo = document.getElementById('fnIntervalo');
+				
+				var inter = fnIntervalo.value;
+				
+				var intervalo = parseInt(inter)*1000;				
+				setIntervalo(intervalo);
+				setInterval(docara, getIntervalo());
+			}
+			
+
+         // var cores = [1, 2, 3, 4];
+
+        // como adicionar a class:       document.querySelector('body').classList.add('red')
+
+
+    </script>
+</body>
+</html>
